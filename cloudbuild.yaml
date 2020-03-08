@@ -1,0 +1,13 @@
+steps
+
+  # Install node packages
+  - name 'gcr.iocloud-buildersnpm'
+    args [ 'install' ]
+
+  # Build productive files
+  - name 'gcr.iocloud-buildersnpm'
+    args [ 'run', 'build', '--prod' ]
+
+  # Deploy to google cloud app egnine
+  - name 'gcr.iocloud-buildersgcloud'
+    args ['app', 'deploy', '--version=prod']
